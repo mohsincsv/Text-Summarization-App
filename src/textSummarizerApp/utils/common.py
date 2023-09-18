@@ -27,10 +27,11 @@ def read_yaml(filepath: str) -> ConfigBox:
 
     try:
         with open(filepath) as yaml_file:
-            config = yaml.safe_load(yaml_file)
+            content = yaml.safe_load(yaml_file)
             logger.info(f"yaml file: {filepath} loaded successfully")
             
-            return ConfigBox(config)
+        return ConfigBox(content)
+    
     except FileNotFoundError:
         raise ValueError('yaml file is empty')
     except Exception as e:
